@@ -1,23 +1,69 @@
+/* Fundo degradê romântico e fonte suave */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
+h1 {
+    font-size: 2rem;
+    color: #ff4b5c;
+}
+
 #countdown {
     font-size: 2rem;
     margin-top: 20px;
+    color: #333;
+}
+
+/* Corações animados */
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4b5c;
+    transform: rotate(45deg);
+    animation: float 5s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4b5c;
+    border-radius: 50%;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
 }
