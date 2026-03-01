@@ -1,6 +1,7 @@
-// Defina a data da viagem aqui (AAAA, MM-1, DD, HH, MM, SS)
-const viagemData = new Date(2026, 8, 15, 5, 0, 0).getTime();
+// Data da viagem: 05 de setembro de 2026 à meia-noite
+const viagemData = new Date(2026, 8, 5, 0, 0, 0).getTime();
 
+// Atualiza a contagem regressiva a cada segundo
 const countdown = setInterval(() => {
     const agora = new Date().getTime();
     const distancia = viagemData - agora;
@@ -20,3 +21,19 @@ const countdown = setInterval(() => {
         document.getElementById("countdown").innerText = "Estamos na viagem! ✈️💕";
     }
 }, 1000);
+
+// Criar corações animados
+function criarCoracoes() {
+    const heartsContainer = document.querySelector('.hearts');
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+    heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}
+
+// Criar corações a cada 300ms
+setInterval(criarCoracoes, 300);
