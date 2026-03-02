@@ -4,6 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva da Nossa Viagem 💕</title>
+    <!-- Carrossel de fotos -->
+<div class="carousel-container">
+  <div class="carousel-slide">
+    <img src="assets/images/foto1.jpg.jpeg" alt="Foto 1">
+    <img src="assets/images/foto2.jpg.jpeg" alt="Foto 2">
+    <img src="assets/images/foto3.jpg.jpeg" alt="Foto 3">
+    <img src="assets/images/foto4.jpg.jpeg" alt="Foto 4">
+    <img src="assets/images/foto5.jpg.jpeg" alt="Foto 5">
+    <img src="assets/images/foto6.jpg.jpeg" alt="Foto 6">
+  </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+<style>
+/* Estilo do carrossel */
+.carousel-container {
+  position: relative;
+  max-width: 600px; /* ajuste o tamanho */
+  margin: 20px auto; /* centralizado abaixo da contagem */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+</style>
+
+<script>
+const slide = document.querySelector('.carousel-slide');
+const images = document.querySelectorAll('.carousel-slide img');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+
+let counter = 0;
+
+function showSlide(index) {
+  if(index < 0) counter = images.length - 1;
+  else if(index >= images.length) counter = 0;
+  else counter = index;
+  slide.style.transform = 'translateX(' + (-counter * 100) + '%)';
+}
+
+prevBtn.addEventListener('click', () => showSlide(counter - 1));
+nextBtn.addEventListener('click', () => showSlide(counter + 1));
+
+// Carrossel automático (opcional)
+setInterval(() => showSlide(counter + 1), 5000); // muda a cada 5s
+</script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
