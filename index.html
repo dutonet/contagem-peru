@@ -6,7 +6,34 @@
     <title>Contagem Regressiva da Nossa Viagem 💕</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body><h2 style="margin-top:40px;">Nossa Viagem ao Peru 🇵🇪</h2>
+
+<div class="gallery">
+  <img src="images/foto1.jpg" alt="Viagem Peru 1">
+  <img src="images/foto2.jpg" alt="Viagem Peru 2">
+  <img src="images/foto3.jpg" alt="Viagem Peru 3">
+</div>
+
+<style>
+  .gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .gallery img {
+    width: 280px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+</style>
     <div class="container">
         <h1>Contagem Regressiva da Nossa Viagem ✈️💖</h1>
         <div id="countdown">
