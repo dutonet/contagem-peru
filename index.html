@@ -9,62 +9,77 @@
     body {
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to bottom, #4facfe, #ffffff);
+        background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+        color: #f5f5f5;
         text-align: center;
-        color: #333;
         overflow-x: hidden;
     }
 
     header {
-        padding: 50px 20px;
+        padding: 60px 20px 30px;
         animation: fadeIn 2s ease-in-out;
     }
 
     h1 {
-        font-size: 2.8em;
-        color: #e63946;
+        font-size: 3em;
+        color: #f8c291;
+        letter-spacing: 2px;
     }
 
     h2 {
-        font-weight: normal;
+        font-weight: 300;
+        margin-top: 10px;
+        color: #ddd;
+    }
+
+    .date {
+        margin-top: 10px;
+        font-size: 1.2em;
+        color: #aaa;
     }
 
     .countdown {
+        margin: 30px auto;
         font-size: 2.2em;
-        margin: 25px 0;
         font-weight: bold;
-        color: #1d3557;
-        background: rgba(255,255,255,0.8);
-        display: inline-block;
-        padding: 15px 25px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        padding: 20px 40px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(8px);
+        width: fit-content;
+        box-shadow: 0 0 25px rgba(248,194,145,0.3);
+        color: #f8c291;
     }
 
     .gallery {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 40px;
     }
 
     .gallery img {
         width: 100%;
-        height: 260px;
+        height: 380px;
         object-fit: cover;
         border-radius: 20px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        transition: transform 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .gallery img:hover {
-        transform: scale(1.08);
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(248,194,145,0.5);
     }
 
     footer {
-        margin: 50px 0;
-        font-size: 1.3em;
-        padding: 0 20px;
+        margin: 60px 20px;
+        font-size: 1.2em;
+        color: #ccc;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6em;
     }
 
     @keyframes fadeIn {
@@ -77,22 +92,22 @@
 <body>
 
 <header>
-    <h1>Larissa ❤️ Eduardo</h1>
-    <h2>Contagem regressiva para o nosso sonho no Peru 🇵🇪</h2>
-    <p>05 de setembro de 2026</p>
+    <h1>Larissa ✨ Eduardo</h1>
+    <h2>Contagem regressiva para o nosso sonho no Peru</h2>
+    <div class="date">05 de Setembro de 2026</div>
     <div class="countdown" id="countdown"></div>
 </header>
 
 <section class="gallery">
-    <img src="https://images.unsplash.com/photo-1505672678657-cc7037095e6f" alt="Machu Picchu">
-    <img src="https://images.unsplash.com/photo-1602002418082-6b0c9a8d8f8c" alt="Laguna Humantay">
-    <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b" alt="Montanha Colorida">
-    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5" alt="Lhamas no Peru">
+    <img src="foto1.jpeg" alt="Larissa e Eduardo na montanha">
+    <img src="foto2.jpeg" alt="Larissa e Eduardo com lhama">
+    <img src="foto3.jpeg" alt="Larissa e Eduardo em Machu Picchu">
 </section>
 
 <footer>
-    Meu amor, cada segundo que passa nos aproxima dessa aventura incrível juntos.  
-    Que o Peru seja só mais um capítulo da nossa história ❤️✈️
+    Cada dia que passa nos aproxima dessa aventura inesquecível.  
+    Que as montanhas do Peru sejam testemunhas do nosso amor,  
+    das nossas risadas e da nossa história que só está começando. ❤️
 </footer>
 
 <script>
@@ -108,12 +123,12 @@
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         document.getElementById("countdown").innerHTML =
-            days + " dias " + hours + "h " + minutes + "m " + seconds + "s ";
+            days + " dias • " + hours + "h • " + minutes + "m • " + seconds + "s";
 
         if (distance < 0) {
             clearInterval(countdown);
-            document.getElementById("countdown").innerHTML = 
-                "CHEGOU O NOSSO DIA NO PERU 🇵🇪❤️✈️";
+            document.getElementById("countdown").innerHTML =
+                "O Peru nos espera ❤️✈️🇵🇪";
         }
     }, 1000);
 </script>
