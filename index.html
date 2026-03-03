@@ -3,16 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Larissa & Eduardo - Peru 2026 ❤️</title>
+<title>Larissa & Eduardo ✨ Peru 2026</title>
 
 <style>
     body {
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
-        background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
-        color: #f5f5f5;
+        background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000814 100%);
+        color: #fff;
         text-align: center;
         overflow-x: hidden;
+    }
+
+    /* ⭐ ESTRELAS */
+    .stars {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        from {opacity: 0.2;}
+        to {opacity: 1;}
     }
 
     header {
@@ -22,14 +46,13 @@
 
     h1 {
         font-size: 3em;
-        color: #f8c291;
-        letter-spacing: 2px;
+        color: #ffd166;
+        letter-spacing: 3px;
     }
 
     h2 {
         font-weight: 300;
-        margin-top: 10px;
-        color: #ddd;
+        color: #ccc;
     }
 
     .date {
@@ -43,33 +66,57 @@
         font-size: 2.2em;
         font-weight: bold;
         padding: 20px 40px;
-        border-radius: 20px;
+        border-radius: 25px;
         background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
         width: fit-content;
-        box-shadow: 0 0 25px rgba(248,194,145,0.3);
-        color: #f8c291;
+        box-shadow: 0 0 30px rgba(255,209,102,0.4);
+        color: #ffd166;
     }
 
     .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
+        gap: 30px;
         padding: 40px;
     }
 
     .gallery img {
         width: 100%;
-        height: 380px;
+        height: 420px;
         object-fit: cover;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.7);
         transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .gallery img:hover {
         transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(248,194,145,0.5);
+        box-shadow: 0 20px 50px rgba(255,209,102,0.6);
+    }
+
+    .secret-btn {
+        margin-top: 30px;
+        padding: 15px 35px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1em;
+        background: linear-gradient(45deg, #ffd166, #ff9f1c);
+        color: #000;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .secret-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .secret-message {
+        margin-top: 20px;
+        font-size: 1.3em;
+        display: none;
+        color: #ffdd99;
+        animation: fadeIn 1s ease-in-out;
     }
 
     footer {
@@ -83,7 +130,7 @@
     }
 
     @keyframes fadeIn {
-        from {opacity: 0; transform: translateY(-20px);}
+        from {opacity: 0; transform: translateY(10px);}
         to {opacity: 1; transform: translateY(0);}
     }
 </style>
@@ -91,28 +138,36 @@
 
 <body>
 
+<div class="stars" id="stars"></div>
+
 <header>
     <h1>Larissa ✨ Eduardo</h1>
-    <h2>Contagem regressiva para o nosso sonho no Peru</h2>
+    <h2>Nosso sonho peruano sob as estrelas</h2>
     <div class="date">05 de Setembro de 2026</div>
     <div class="countdown" id="countdown"></div>
+
+    <button class="secret-btn" onclick="showSecret()">
+        💌 Clique aqui
+    </button>
+    <div class="secret-message" id="secretMessage">
+        Prepara a mochila pra trazer uma lhama bebê de lembrança 🦙❤️
+    </div>
 </header>
 
 <section class="gallery">
-    <img src="foto1.jpeg" alt="Larissa e Eduardo na montanha">
-    <img src="foto2.jpeg" alt="Larissa e Eduardo com lhama">
-    <img src="foto3.jpeg" alt="Larissa e Eduardo em Machu Picchu">
+    <img src="foto1.jpeg">
+    <img src="foto2.jpeg">
+    <img src="foto3.jpeg">
 </section>
 
 <footer>
-    Cada dia que passa nos aproxima dessa aventura inesquecível.  
-    Que as montanhas do Peru sejam testemunhas do nosso amor,  
-    das nossas risadas e da nossa história que só está começando. ❤️
+    Que as estrelas dos Andes iluminem cada passo da nossa jornada.
+    O Peru será só mais um capítulo da nossa história ✨❤️
 </footer>
 
 <script>
+    // Contagem regressiva
     const targetDate = new Date("September 05, 2026 00:00:00").getTime();
-
     const countdown = setInterval(function() {
         const now = new Date().getTime();
         const distance = targetDate - now;
@@ -131,6 +186,21 @@
                 "O Peru nos espera ❤️✈️🇵🇪";
         }
     }, 1000);
+
+    // Estrelas
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < 150; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDuration = (Math.random() * 3 + 1) + "s";
+        starsContainer.appendChild(star);
+    }
+
+    function showSecret() {
+        document.getElementById("secretMessage").style.display = "block";
+    }
 </script>
 
 </body>
